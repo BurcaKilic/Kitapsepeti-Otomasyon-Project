@@ -1,88 +1,50 @@
-# Kitapsepeti Cypress Otomasyon Test Projesi
+Kitapsepeti.com E-Ticaret QA Otomasyon Projesi
 
-## Projenin Amacı
+Projenin Konusu
 
-Bu proje, Kitapsepeti e-ticaret platformunda kullanıcının satın alma deneyimini etkileyen temel fonksiyonların kalite kontrolünü sağlamak amacıyla hazırlanmıştır.
+Bu proje Kitapsepeti.com sitesinin düzgün çalışıp çalışmadığını otomatik olarak test eden bir yazılımdır. Kullanıcının siteye girişten satın almaya kadar geçtiği adımlar, her seferinde manuel test etmek yerine otomatik olarak test edilmektedir.
 
-Canlı sistem üzerinde;
+Test Edilen Konular
 
-- kullanıcı girişi,
-- ürün arama ve listeleme,
-- ürün detay sayfası inceleme,
-- sepete ekleme,
-- sepet yönetimi,
-- ödeme adımları
-ve
-- misafir olarak satın alma
+Sitedeki 6 ana işlemi test edildi:
 
-süreçleri Cypress kullanılarak otomasyon kapsamına alınmıştır.
+- US01 - Kullanıcı Girişi 
+- US02 - Ürün Arama
+- US03 - Ürün Detay Sayfası
+- US04 - Sepet Yönetimi
+- US05 - Ödeme Adımı
+- US06 - Misafir Satın Alma
 
----
+Toplam 50 test yazıldı. Hepsi başarıyla geçti.
 
-## Proje Kapsamındaki User Story'ler
+Hangi Araçlar Kullanıldı?
 
-- US01 - Kullanıcı Girişi
-- US02 - Ürün Arama ve Listeleme
-- US03 - Ürün Detay Sayfası ve Sepete Ekleme
-- US04 - Sepet Yönetimi ve Kontrolü
-- US05 - Ödeme ve Sipariş Onayı
-- US06 - Misafir Olarak Satın Alma Akışı
+MS Office Excel: Testlerin yazıldığı program.
+Cypress: Testleri  çalıştıran program.
+Json: Testlerin yazıldığı programlama dili.
+Page Object Model: Her sayfanın kodunu ayrı dosyada tuttuk, böylece kod daha düzenli oldu.
 
----
+Projeyi Çalıştırmak İçin Ne Gerekti?
 
-## Test Kapsamı ve İzlenebilirlik
+Bilgisayarda Node.js, Cypress ve Visual Studio Code kurulu olmalı.
 
-Projede toplam 50 adet test senaryosu hazırlanmış ve bu senaryoların tamamı Cypress ile otomasyona alınmıştır.
 
-Tüm testler;
+Projede Karşılaşılan Zorluklar
 
-- TC (Test Case) numarası
-- AC (Acceptance Criteria) numarası
+Scriptsler bilinmiyordu: Kitapsepeti'nin hangi buton veya kutunun hangi kodla çağrıldığını bilinmiyordu. Chrome'un geliştirici aracıyla her elementi tek tek bulundu.
 
-ile eşleştirilmiş, böylece tüm acceptance criteriaların hangi otomasyon testi ile doğrulandığı izlenebilir hale getirilmiştir.
+Popup sorunu: Site açılınca çerez onayı ve kampanya penceresi çıkıyordu. Bunlar testleri engelliyordu. Her test başlamadan önce bu pencereleri kapatan bir kod yapay zekalar sayesinde yazıldı.
 
----
+Geçersiz arama sonucu: Olmayan bir ürün arandığında site "bulunamadı" yazmıyor, sadece boş sayfa gösteriyor. Bunu göz önünde bulundurarak testi yeniden yazıldı.
 
-## Kullanılan Teknolojiler
+Görseller geç yükleniyordu: Ürün resimleri sayfa açılınca hemen gelmiyor. Bu yüzden resim kontrolü yerine ürün adı ve fiyat kontrolü yapıldı. Test adımları arasındaki süreler de daha uzun tutuldu.
 
-- JavaScript
-- Cypress
-- Page Object Model (POM)
-- Fixture Data Management
+Site kod hataları: Kitapsepeti'nin kendi kodunda bazı hatalar vardı, bunlar testimizi durduruyordu. Bu hataları görmezden gelen bir ayarı yapay zekalar verdi. 
 
----
+Türkçe karakter sorunu: Kod içinde Türkçe harf kullanınca bazı testler hata verdi. Türkçe harf içermeyen kelimelerle kontrol yapıldı. Bazı yerlerde de Türkçe karakter olmalıydı. Bazı testler bu sebeple de hata verdi.
 
-## Proje Mimarisi
+Önemli Notlar
 
-Kod okunabilirliğini ve sürdürülebilirliğini artırmak amacıyla Page Object Model mimarisi tercih edilmiştir.
-
-Klasör yapısı:
-
-- cypress/e2e → User Story bazlı test dosyaları
-- cypress/pages → Sayfa bazlı ortak methodlar
-- cypress/fixtures → Test verileri
-- cypress/support → Global hata yönetimi
-
----
-
-## Test Verisi Yönetimi
-
-Kullanıcı bilgileri, arama kelimeleri ve diğer tüm test verileri `testData.json` dosyası üzerinden yönetilmektedir.
-
-Bu yapı sayesinde test senaryoları içinde sabit veri kullanımı azaltılarak daha esnek bir otomasyon yapısı kurulmuştur.
-
----
-
-## Teknik Zorluklar ve Çözümler
-
-Canlı production ortamında karşılaşılan popup, reklam katmanı ve JavaScript tabanlı uncaught exception hataları otomasyon akışını kesintiye uğrattığı için gerekli exception handling ve force click çözümleri uygulanmıştır.
-
-Bu sayede test akışlarının daha stabil şekilde çalışması sağlanmıştır.
-
----
-
-## Proje Sonucu
-
-Kitapsepeti platformunda kullanıcı deneyimini etkileyen kritik e-ticaret akışlarına ait fonksiyonlar regression mantığıyla test edilmiş ve otomasyon kapsamına alınmıştır.
-
-Hazırlanan framework sayesinde testlerin izlenebilirliği, yeniden kullanılabilirliği ve sürdürülebilirliği artırılmıştır.
+Testler gerçek Kitapsepeti sitesi üzerinde çalışmaktadır.
+Hiçbir zaman gerçek sipariş oluşturulmadı, ödeme adımına gidilmedi.
+Kullanıcı bilgileri tamamen sahte test verisidir. Sadece mail adresi testlerde kullanılmak için oluşturulmuş bir mail adresidir.
