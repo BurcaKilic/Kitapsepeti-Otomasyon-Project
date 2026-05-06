@@ -1,0 +1,44 @@
+{
+  "validUser": {
+    "email": "burca.test@gmail.com",
+    "password": "Test.2026"
+  },
+
+  "invalidUser": {
+    "email": "wrongmail@gmail.com",
+    "password": "1234567"
+  },
+
+  "invalidFormatUser": {
+    "email": "wrongformatmail",
+    "password": "123456"
+  },
+
+  "emptyUser": {
+    "email": "",
+    "password": ""
+  },
+
+  "searchData": {
+    "validKeyword": "Harry Potter",
+    "invalidKeyword": "asdgwfert"
+  },
+
+  "guestUser": {
+    "ad": "Ahmet",
+    "soyad": "Demir",
+    "email": "guest.demo.test@gmail.com",
+    "telefon": "5324567812",
+    "adres": "Ataturk Mahallesi Cumhuriyet Sokak No:15",
+    "il": "Izmir",
+    "ilce": "Bornova"
+  },
+
+  "paymentData": {
+    "cardName": "AHMET DEMIR",
+    "cardNumber": "4111111111111111",
+    "month": "12",
+    "year": "2028",
+    "cvv": "123"
+  }
+}
